@@ -5,6 +5,7 @@
 ]]
 
 local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 cmp.setup({
   -- Enable LSP snippets
@@ -43,16 +44,27 @@ cmp.setup({
       documentation = cmp.config.window.bordered(),
   },
   formatting = {
-      fields = {'menu', 'abbr', 'kind'},
-      format = function(entry, item)
-          local menu_icon ={
-              nvim_lsp = 'λ',
-              vsnip = '⋗',
-              buffer = 'Ω',
-              path = '🖫',
-          }
-          item.menu = menu_icon[entry.source.name]
-          return item
-      end,
-  },
+--    fields = {'menu', 'abbr', 'kind'},
+    format = lspkind.cmp_format({
+      mode = 'text', -- show only symbol annotations
+      maxwidth = 50,
+      ellipsis_char = '...',
+      -- https://github.com/onsails/lspkind-nvim/pull/30
+      before = function (entry, vim_item)
+        return vim_item
+      end
+    })
+  }
+  --formatting = {
+  --    format = function(entry, item)
+  --        local menu_icon ={
+  --            nvim_lsp = 'λ',
+  --            vsnip = '⋗',
+  --            buffer = 'Ω',
+  --            path = '🖫',
+  --        }
+  --        item.menu = menu_icon[entry.source.name]
+  --        return item
+  --    end,
+  --},
 })

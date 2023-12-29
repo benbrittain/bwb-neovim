@@ -14,7 +14,8 @@ cmd[[autocmd FileType * setlocal formatoptions-=cro]]
 
 -- Disable cursor
 cmd[[set mouse=]]
--- Dsiable gutterbar
+
+-- Disable gutterbar
 cmd[[set signcolumn=no]]
 
 -- Tabs {{{
@@ -27,10 +28,6 @@ opt.smartindent = true              -- Turn on smart indentation. See in the doc
 -- Clipboard {{{
 opt.clipboard = 'unnamedplus' -- Use system clipboard
 opt.fixeol = false -- Turn off appending new line in the end of a file
--- }}}
-
--- Folding {{{
-opt.foldmethod = 'syntax'
 -- }}}
 
 -- Search {{{
